@@ -17,7 +17,7 @@ export default function TransactionItem({ transaction, onDelete }: TransactionIt
   const emoji = isIncome ? "💵" : categoryInfo?.emoji || "📋";
 
   return (
-    <div className="flex items-center justify-between py-3 px-2 sm:px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl transition-colors group">
+    <div className="flex items-center justify-between py-3 px-1 sm:px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl transition-colors group">
       <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
         <div
           className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center text-base sm:text-lg flex-shrink-0 ${
@@ -32,18 +32,17 @@ export default function TransactionItem({ transaction, onDelete }: TransactionIt
             {new Date(transaction.date).toLocaleDateString("en-US", {
               month: "short",
               day: "numeric",
-              year: "numeric",
             })}
             {!isIncome && categoryInfo && (
-              <span className="ml-2 text-gray-400 dark:text-gray-500 hidden sm:inline">• {categoryInfo.label}</span>
+              <span className="ml-1 sm:ml-2 text-gray-400 dark:text-gray-500">• {categoryInfo.label}</span>
             )}
           </p>
         </div>
       </div>
-      <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+      <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0 ml-2">
         <div className="text-right">
           <p
-            className={`text-sm font-semibold ${
+            className={`text-xs sm:text-sm font-semibold whitespace-nowrap ${
               isIncome ? "text-emerald-600 dark:text-emerald-400" : "text-red-500 dark:text-red-400"
             }`}
           >
@@ -60,9 +59,9 @@ export default function TransactionItem({ transaction, onDelete }: TransactionIt
         {onDelete && (
           <button
             onClick={() => onDelete(transaction.id)}
-            className="opacity-0 group-hover:opacity-100 p-1.5 sm:p-2 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg transition-all"
+            className="opacity-100 sm:opacity-0 sm:group-hover:opacity-100 p-1.5 sm:p-2 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg transition-all"
           >
-            <Trash2 className="w-4 h-4 text-red-400" />
+            <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-400" />
           </button>
         )}
       </div>

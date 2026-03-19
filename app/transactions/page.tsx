@@ -70,18 +70,18 @@ export default function TransactionsPage() {
         )}
       </div>
 
-      <div className="grid grid-cols-3 gap-3 sm:gap-4">
+      <div className="grid grid-cols-3 gap-2 sm:gap-4">
         <div className="card bg-blue-50 dark:bg-blue-900/20 border-blue-100 dark:border-blue-800">
           <p className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 font-medium">Total Txns</p>
-          <p className="text-lg sm:text-2xl font-bold text-blue-700 dark:text-blue-300 mt-1">{filtered.length}</p>
+          <p className="text-base sm:text-2xl font-bold text-blue-700 dark:text-blue-300 mt-1">{filtered.length}</p>
         </div>
         <div className="card bg-emerald-50 dark:bg-emerald-900/20 border-emerald-100 dark:border-emerald-800">
           <p className="text-xs sm:text-sm text-emerald-600 dark:text-emerald-400 font-medium">Income</p>
-          <p className="text-lg sm:text-2xl font-bold text-emerald-700 dark:text-emerald-300 mt-1 truncate">{formatAmount(totalIncome)}</p>
+          <p className="text-sm sm:text-2xl font-bold text-emerald-700 dark:text-emerald-300 mt-1 break-all leading-tight">{formatAmount(totalIncome)}</p>
         </div>
         <div className="card bg-red-50 dark:bg-red-900/20 border-red-100 dark:border-red-800">
           <p className="text-xs sm:text-sm text-red-600 dark:text-red-400 font-medium">Expenses</p>
-          <p className="text-lg sm:text-2xl font-bold text-red-700 dark:text-red-300 mt-1 truncate">{formatAmount(totalExpenses)}</p>
+          <p className="text-sm sm:text-2xl font-bold text-red-700 dark:text-red-300 mt-1 break-all leading-tight">{formatAmount(totalExpenses)}</p>
         </div>
       </div>
 

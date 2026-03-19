@@ -1,6 +1,7 @@
 "use client";
 
 import { Transaction, MonthlyBudget, CategorySummary, ExpenseCategory } from "./types";
+import { saveBackup } from "./backup";
 
 const STORAGE_KEY = "finance-app-transactions";
 
@@ -12,7 +13,9 @@ export function getTransactions(): Transaction[] {
 
 export function saveTransactions(transactions: Transaction[]): void {
   if (typeof window === "undefined") return;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions));
+  const data = JSON.stringify(transactions);
+  localStorage.setItem(STORAGE_KEY, data);
+  saveBackup(data);
 }
 
 export function addTransaction(transaction: Transaction): Transaction[] {

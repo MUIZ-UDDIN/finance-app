@@ -171,27 +171,27 @@ export default function InsightsPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-3 gap-3 sm:gap-4">
+      <div className="grid grid-cols-3 gap-2 sm:gap-4">
         <div className="card text-center">
           <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8 text-emerald-500 dark:text-emerald-400 mx-auto" />
-          <p className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white mt-2 truncate">
+          <p className="text-sm sm:text-2xl font-bold text-gray-900 dark:text-white mt-2 break-all leading-tight">
             {formatAmount(monthlyData.income)}
           </p>
-          <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Income</p>
+          <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">Income</p>
         </div>
         <div className="card text-center">
           <TrendingDown className="w-6 h-6 sm:w-8 sm:h-8 text-red-500 dark:text-red-400 mx-auto" />
-          <p className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white mt-2 truncate">
+          <p className="text-sm sm:text-2xl font-bold text-gray-900 dark:text-white mt-2 break-all leading-tight">
             {formatAmount(monthlyData.expenses)}
           </p>
-          <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Expenses</p>
+          <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">Expenses</p>
         </div>
         <div className="card text-center">
           <PiggyBank className="w-6 h-6 sm:w-8 sm:h-8 text-primary-500 dark:text-primary-400 mx-auto" />
-          <p className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white mt-2 truncate">
+          <p className="text-sm sm:text-2xl font-bold text-gray-900 dark:text-white mt-2 break-all leading-tight">
             {formatAmount(monthlyData.balance)}
           </p>
-          <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Savings</p>
+          <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">Savings</p>
         </div>
       </div>
 

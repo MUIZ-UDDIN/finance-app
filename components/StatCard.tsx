@@ -35,19 +35,19 @@ export default function StatCard({ title, value, icon: Icon, trend, trendUp, col
 
   return (
     <div className="card hover:shadow-md transition-shadow duration-200">
-      <div className="flex items-start justify-between">
-        <div className="min-w-0 flex-1">
-          <p className="text-sm font-medium text-gray-500 dark:text-gray-400">{title}</p>
-          <p className={`text-xl sm:text-2xl font-bold mt-1 truncate ${colors.text}`}>{value}</p>
-          {trend && (
-            <p className={`text-xs mt-2 font-medium ${trendUp ? "text-emerald-600 dark:text-emerald-400" : "text-red-500 dark:text-red-400"}`}>
-              {trendUp ? "↑" : "↓"} {trend}
-            </p>
-          )}
+      <div className="flex items-start justify-between gap-2">
+        <div className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${colors.icon}`}>
+          <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
         </div>
-        <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${colors.icon}`}>
-          <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
-        </div>
+      </div>
+      <div className="mt-3">
+        <p className="text-xs sm:text-sm font-medium text-gray-500 dark:text-gray-400">{title}</p>
+        <p className={`text-base sm:text-xl md:text-2xl font-bold mt-1 break-all leading-tight ${colors.text}`}>{value}</p>
+        {trend && (
+          <p className={`text-xs mt-2 font-medium ${trendUp ? "text-emerald-600 dark:text-emerald-400" : "text-red-500 dark:text-red-400"}`}>
+            {trendUp ? "↑" : "↓"} {trend}
+          </p>
+        )}
       </div>
     </div>
   );
