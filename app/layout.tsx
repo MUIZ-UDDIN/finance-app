@@ -47,6 +47,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_ID || "ca-pub-XXXXXXXXXX"}`}
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className={inter.className}>
         <AppShell>{children}</AppShell>
         <PWARegister />

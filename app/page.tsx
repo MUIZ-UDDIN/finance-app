@@ -24,6 +24,7 @@ import {
 import Link from "next/link";
 import StatCard from "@/components/StatCard";
 import TransactionItem from "@/components/TransactionItem";
+import AdBanner from "@/components/AdBanner";
 import { useCurrency } from "@/lib/CurrencyContext";
 import { useTheme } from "@/lib/ThemeContext";
 import {
@@ -119,6 +120,8 @@ export default function Dashboard() {
           trendUp={Number(savingsRate) >= 20}
         />
       </div>
+
+      <AdBanner adSlot="1234567890" adFormat="horizontal" className="my-2" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         <div className="lg:col-span-2 card">

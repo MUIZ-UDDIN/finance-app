@@ -6,6 +6,7 @@ import { ArrowDownCircle, CheckCircle } from "lucide-react";
 import { addTransaction } from "@/lib/store";
 import { useCurrency } from "@/lib/CurrencyContext";
 import { Transaction } from "@/lib/types";
+import AdBanner from "@/components/AdBanner";
 
 export default function IncomePage() {
   const { currency } = useCurrency();
@@ -108,6 +109,8 @@ export default function IncomePage() {
           Add Income
         </button>
       </form>
+
+      <AdBanner adSlot="2345678901" adFormat="horizontal" className="mt-2" />
     </div>
   );
 }

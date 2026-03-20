@@ -17,9 +17,12 @@ import {
   Monitor,
   ChevronDown,
   Settings,
+  LogOut,
 } from "lucide-react";
 import { useTheme } from "@/lib/ThemeContext";
 import { useCurrency, CURRENCIES } from "@/lib/CurrencyContext";
+import { useAuth } from "@/lib/AuthContext";
+import Image from "next/image";
 
 const navItems = [
   { href: "/", label: "Dashboard", icon: LayoutDashboard },
@@ -35,6 +38,7 @@ export default function Sidebar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { theme, setTheme, resolvedTheme } = useTheme();
   const { currency, setCurrency } = useCurrency();
+  const { user, logout } = useAuth();
   const [showCurrency, setShowCurrency] = useState(false);
 
   useEffect(() => {
@@ -131,12 +135,36 @@ export default function Sidebar() {
           <span className="text-xs text-gray-400">{resolvedTheme === "dark" ? "Dark" : "Light"}</span>
         </button>
 
-        <div className="bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-950 dark:to-accent-950 rounded-xl p-4">
-          <p className="text-xs font-medium text-primary-700 dark:text-primary-300">Pro Tip</p>
-          <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
-            Track every expense to get accurate AI insights on your spending habits.
-          </p>
-        </div>
+        {user && (
+          <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-gray-50 dark:bg-gray-800">
+            {user.photoURL ? (
+              <Image
+                src={user.photoURL}
+                alt={user.displayName || "User"}
+                width={32}
+                height={32}
+                className="w-8 h-8 rounded-full flex-shrink-0"
+              />
+            ) : (
+              <div className="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center flex-shrink-0 text-white text-sm font-bold">
+                {(user.displayName || user.email || "U")[0].toUpperCase()}
+              </div>
+            )}
+            <div className="min-w-0 flex-1">
+              <p className="text-xs font-semibold text-gray-900 dark:text-white truncate">
+                {user.displayName || user.email?.split("@")[0]}
+              </p>
+              <p className="text-xs text-gray-400 dark:text-gray-500 truncate">{user.email}</p>
+            </div>
+            <button
+              onClick={logout}
+              title="Sign out"
+              className="p-1.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors flex-shrink-0"
+            >
+              <LogOut className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

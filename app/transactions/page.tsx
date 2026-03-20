@@ -6,6 +6,7 @@ import TransactionItem from "@/components/TransactionItem";
 import { useCurrency } from "@/lib/CurrencyContext";
 import { getTransactions, deleteTransaction } from "@/lib/store";
 import { Transaction, TransactionType } from "@/lib/types";
+import AdBanner from "@/components/AdBanner";
 
 export default function TransactionsPage() {
   const { formatAmount } = useCurrency();
@@ -84,6 +85,8 @@ export default function TransactionsPage() {
           <p className="text-sm sm:text-2xl font-bold text-red-700 dark:text-red-300 mt-1 break-all leading-tight">{formatAmount(totalExpenses)}</p>
         </div>
       </div>
+
+      <AdBanner adSlot="4567890123" adFormat="horizontal" className="my-2" />
 
       <div className="card">
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6">

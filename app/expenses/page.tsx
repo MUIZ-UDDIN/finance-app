@@ -6,6 +6,7 @@ import { ArrowUpCircle, CheckCircle } from "lucide-react";
 import { addTransaction, EXPENSE_CATEGORIES } from "@/lib/store";
 import { useCurrency } from "@/lib/CurrencyContext";
 import { Transaction, ExpenseCategory } from "@/lib/types";
+import AdBanner from "@/components/AdBanner";
 
 export default function ExpensesPage() {
   const { currency } = useCurrency();
@@ -127,6 +128,8 @@ export default function ExpensesPage() {
           Add Expense
         </button>
       </form>
+
+      <AdBanner adSlot="3456789012" adFormat="horizontal" className="mt-2" />
     </div>
   );
 }
