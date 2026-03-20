@@ -68,7 +68,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
       }
     } catch (e: unknown) {
-      console.error("Google Sign-In Error:", e);
       setError(getErrorMessage(e));
     }
   };
