@@ -18,6 +18,13 @@ import {
   ChevronDown,
   Settings,
   LogOut,
+  Target,
+  RefreshCw,
+  Bell,
+  FileText,
+  CreditCard,
+  PiggyBank,
+  User,
 } from "lucide-react";
 import { useTheme } from "@/lib/ThemeContext";
 import { useCurrency, CURRENCIES } from "@/lib/CurrencyContext";
@@ -29,7 +36,14 @@ const navItems = [
   { href: "/income", label: "Add Income", icon: ArrowDownCircle },
   { href: "/expenses", label: "Add Expense", icon: ArrowUpCircle },
   { href: "/transactions", label: "Transactions", icon: List },
+  { href: "/budgets", label: "Budget Goals", icon: Target },
+  { href: "/recurring", label: "Recurring", icon: RefreshCw },
+  { href: "/bills", label: "Bills", icon: Bell },
+  { href: "/accounts", label: "Accounts", icon: CreditCard },
+  { href: "/savings", label: "Savings Goals", icon: PiggyBank },
+  { href: "/reports", label: "Reports", icon: FileText },
   { href: "/insights", label: "AI Insights", icon: Brain },
+  { href: "/profile", label: "Profile", icon: User },
   { href: "/settings", label: "Settings", icon: Settings },
 ];
 
