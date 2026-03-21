@@ -109,22 +109,20 @@ export default function SettingsPage() {
         <div>
           <h2 className="font-semibold text-gray-900 dark:text-white mb-1">Currency</h2>
           <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Select your preferred currency for display</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+          <select
+            value={currency.code}
+            onChange={(e) => {
+              const selected = CURRENCIES.find((c) => c.code === e.target.value);
+              if (selected) setCurrency(selected);
+            }}
+            className="select-field"
+          >
             {CURRENCIES.map((c) => (
-              <button
-                key={c.code}
-                onClick={() => setCurrency(c)}
-                className={`text-left px-4 py-3 rounded-xl border-2 transition-all text-sm ${
-                  currency.code === c.code
-                    ? "border-primary-500 bg-primary-50 dark:bg-primary-950 text-primary-700 dark:text-primary-300"
-                    : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 text-gray-600 dark:text-gray-400"
-                }`}
-              >
-                <span className="font-semibold">{c.symbol} {c.code}</span>
-                <span className="block text-xs opacity-70 mt-0.5">{c.name}</span>
-              </button>
+              <option key={c.code} value={c.code}>
+                {c.symbol} {c.code} — {c.name}
+              </option>
             ))}
-          </div>
+          </select>
         </div>
 
         <hr className="border-gray-100 dark:border-gray-800" />

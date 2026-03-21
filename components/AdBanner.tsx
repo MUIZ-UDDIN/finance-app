@@ -40,13 +40,18 @@ export default function AdBanner({
       return;
     }
 
-    // Observe the ad container — show only when ad content fills it
+    // Observe the ad container — show only when ad is truly filled
     const observer = new MutationObserver(() => {
       if (adRef.current) {
         const ins = adRef.current.querySelector("ins.adsbygoogle");
-        if (ins && (ins as HTMLElement).dataset.adStatus === "filled") {
-          setAdActive(true);
-          observer.disconnect();
+        if (ins) {
+          const status = (ins as HTMLElement).dataset.adStatus;
+          if (status === "filled") {
+            setAdActive(true);
+            observer.disconnect();
+          } else if (status === "unfilled") {
+            observer.disconnect();
+          }
         }
       }
     });
@@ -55,16 +60,16 @@ export default function AdBanner({
       observer.observe(adRef.current, { attributes: true, childList: true, subtree: true });
     }
 
-    // Fallback: check after a delay if ad was filled
+    // Fallback: only show if ad has "filled" status after timeout
     const timer = setTimeout(() => {
       if (adRef.current) {
         const ins = adRef.current.querySelector("ins.adsbygoogle");
-        if (ins && (ins as HTMLElement).offsetHeight > 0) {
+        if (ins && (ins as HTMLElement).dataset.adStatus === "filled") {
           setAdActive(true);
         }
       }
       observer.disconnect();
-    }, 3000);
+    }, 5000);
 
     return () => {
       observer.disconnect();

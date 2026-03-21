@@ -233,7 +233,9 @@ export default function InsightsPage() {
               );
               return (
                 <div key={cat.category} className="flex items-center gap-2 sm:gap-3">
-                  <span className="text-base sm:text-lg w-7 sm:w-8">{catInfo?.emoji || "📋"}</span>
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-xs font-bold text-primary-600 dark:text-primary-400 flex-shrink-0">
+                    {(catInfo?.label?.[0] || cat.category[0] || "O").toUpperCase()}
+                  </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between text-xs sm:text-sm mb-1">
                       <span className="font-medium text-gray-700 dark:text-gray-300 truncate">

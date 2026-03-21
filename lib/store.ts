@@ -104,17 +104,17 @@ export function getRecentTransactions(limit: number = 5): Transaction[] {
   return getTransactions().slice(0, limit);
 }
 
-export const EXPENSE_CATEGORIES: { value: ExpenseCategory; label: string; emoji: string }[] = [
-  { value: "food", label: "Food & Dining", emoji: "🍔" },
-  { value: "transport", label: "Transport", emoji: "🚗" },
-  { value: "housing", label: "Housing & Rent", emoji: "🏠" },
-  { value: "utilities", label: "Utilities & Bills", emoji: "💡" },
-  { value: "entertainment", label: "Entertainment", emoji: "🎬" },
-  { value: "healthcare", label: "Healthcare", emoji: "🏥" },
-  { value: "education", label: "Education", emoji: "📚" },
-  { value: "shopping", label: "Shopping", emoji: "🛍️" },
-  { value: "savings", label: "Savings & Investment", emoji: "💰" },
-  { value: "other", label: "Other", emoji: "📋" },
+export const EXPENSE_CATEGORIES: { value: ExpenseCategory; label: string }[] = [
+  { value: "food", label: "Food & Dining" },
+  { value: "transport", label: "Transport" },
+  { value: "housing", label: "Housing & Rent" },
+  { value: "utilities", label: "Utilities & Bills" },
+  { value: "entertainment", label: "Entertainment" },
+  { value: "healthcare", label: "Healthcare" },
+  { value: "education", label: "Education" },
+  { value: "shopping", label: "Shopping" },
+  { value: "savings", label: "Savings & Investment" },
+  { value: "other", label: "Other" },
 ];
 
 export function formatCurrency(amount: number): string {

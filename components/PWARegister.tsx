@@ -60,18 +60,14 @@ export default function PWARegister() {
 
   const handleDismiss = () => {
     setShowInstall(false);
-    // Don't show again for 24 hours
-    localStorage.setItem("pwa-dismiss-time", Date.now().toString());
+    // Don't show again until full page refresh
+    sessionStorage.setItem("pwa-dismissed", "true");
   };
 
-  // Don't show if dismissed recently
+  // Don't show if dismissed this session
   useEffect(() => {
-    const dismissTime = localStorage.getItem("pwa-dismiss-time");
-    if (dismissTime) {
-      const elapsed = Date.now() - parseInt(dismissTime);
-      if (elapsed < 24 * 60 * 60 * 1000) {
-        setShowInstall(false);
-      }
+    if (sessionStorage.getItem("pwa-dismissed") === "true") {
+      setShowInstall(false);
     }
   }, []);
 

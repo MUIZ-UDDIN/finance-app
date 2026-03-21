@@ -13,6 +13,7 @@ export default function ExpensesPage() {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState<ExpenseCategory>("food");
+  const [customCategory, setCustomCategory] = useState("");
   const [date, setDate] = useState(() => new Date().toISOString().split("T")[0]);
   const [success, setSuccess] = useState(false);
 
@@ -25,7 +26,7 @@ export default function ExpensesPage() {
       type: "expense",
       description,
       amount: parseFloat(amount),
-      category,
+      category: category === "other" && customCategory.trim() ? customCategory.trim() as ExpenseCategory : category,
       date,
       createdAt: new Date().toISOString(),
     };
@@ -34,6 +35,7 @@ export default function ExpensesPage() {
     setSuccess(true);
     setDescription("");
     setAmount("");
+    setCustomCategory("");
     setTimeout(() => setSuccess(false), 3000);
   };
 
@@ -104,11 +106,26 @@ export default function ExpensesPage() {
             >
               {EXPENSE_CATEGORIES.map((cat) => (
                 <option key={cat.value} value={cat.value}>
-                  {cat.emoji} {cat.label}
+                  {cat.label}
                 </option>
               ))}
             </select>
           </div>
+
+          {category === "other" && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Custom Category Name
+              </label>
+              <input
+                type="text"
+                value={customCategory}
+                onChange={(e) => setCustomCategory(e.target.value)}
+                placeholder="e.g. Gifts, Pets, Subscriptions"
+                className="input-field"
+              />
+            </div>
+          )}
 
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">

@@ -14,17 +14,17 @@ export default function TransactionItem({ transaction, onDelete }: TransactionIt
   const { formatAmount } = useCurrency();
   const isIncome = transaction.type === "income";
   const categoryInfo = EXPENSE_CATEGORIES.find((c) => c.value === transaction.category);
-  const emoji = isIncome ? "💵" : categoryInfo?.emoji || "📋";
+  const initial = isIncome ? "IN" : (categoryInfo?.label?.[0] || "O");
 
   return (
     <div className="flex items-center justify-between py-3 px-1 sm:px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl transition-colors group">
       <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
         <div
-          className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center text-base sm:text-lg flex-shrink-0 ${
-            isIncome ? "bg-emerald-50 dark:bg-emerald-900/30" : "bg-red-50 dark:bg-red-900/30"
+          className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center text-xs sm:text-sm font-bold flex-shrink-0 ${
+            isIncome ? "bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400" : "bg-red-50 dark:bg-red-900/30 text-red-500 dark:text-red-400"
           }`}
         >
-          {emoji}
+          {initial}
         </div>
         <div className="min-w-0">
           <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">{transaction.description}</p>
