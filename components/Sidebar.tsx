@@ -25,6 +25,8 @@ import {
   CreditCard,
   PiggyBank,
   User,
+  Info,
+  Mail,
 } from "lucide-react";
 import { useTheme } from "@/lib/ThemeContext";
 import { useCurrency, CURRENCIES } from "@/lib/CurrencyContext";
@@ -45,6 +47,8 @@ const navItems = [
   { href: "/insights", label: "AI Insights", icon: Brain },
   { href: "/profile", label: "Profile", icon: User },
   { href: "/settings", label: "Settings", icon: Settings },
+  { href: "/about", label: "About Us", icon: Info },
+  { href: "/contact", label: "Contact Us", icon: Mail },
 ];
 
 export default function Sidebar() {

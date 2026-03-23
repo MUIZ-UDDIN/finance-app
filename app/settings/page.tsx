@@ -9,7 +9,10 @@ import {
   Download,
   AlertTriangle,
   CheckCircle,
+  Info,
+  Mail,
 } from "lucide-react";
+import Link from "next/link";
 import { useTheme } from "@/lib/ThemeContext";
 import { useCurrency, CURRENCIES } from "@/lib/CurrencyContext";
 import { getTransactions, saveTransactions } from "@/lib/store";
@@ -148,6 +151,23 @@ export default function SettingsPage() {
                 className="hidden"
               />
             </label>
+          </div>
+        </div>
+
+        <hr className="border-gray-100 dark:border-gray-800" />
+
+        <div>
+          <h2 className="font-semibold text-gray-900 dark:text-white mb-1">About & Support</h2>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Learn more or get in touch</p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link href="/about" className="btn-secondary flex items-center justify-center gap-2">
+              <Info className="w-4 h-4" />
+              About Us
+            </Link>
+            <Link href="/contact" className="btn-secondary flex items-center justify-center gap-2">
+              <Mail className="w-4 h-4" />
+              Contact Us
+            </Link>
           </div>
         </div>
 
